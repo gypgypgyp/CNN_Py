@@ -30,30 +30,24 @@ Random data shuffle in every train epoch:
 	shuffle = True, False 
 
 Layer setting for CNN:
+```
 Input = ['input', (1, image_length, image_width)]
 Convoution = ['convolution', [(filter_length, filter_width), filter_num, padding, stride]]
 Maxpooling = ['maxpooling', [(filter_length, filter_width), stride]]
 Meanpooling = ['meanpooling', [(filter_length, filter_width), stride]]
 Dropout = ['dropout', drop_prob(usually 0 ~ 0.5)]
 Hidden = ['hidden', hidden_unit_num]
-Output = ['output', output_unit_num]]
-
+Output = ['output', output_unit_num]
+```
 Layer setting for NN:
+```
 Input = ['input', input_unit_num]
 Dropout = ['dropout', drop_prob(usually 0 ~ 0.5)]
 Hidden = ['hidden', hidden_unit_num]
-Output = ['output', output_unit_num]]
-
-Shortcomings:
-1. linear output uses squared loss only, sigmoid and softmax use cross entropy only
-2. only SGD for optimization method, mini-batch SGD to be updated
-3. L2, L1 penalty regularization methods to be updated
-4. momentum, etc. optimization methods to be updated
-5. must specify trainning epoch, or training will run until all training instances are correctly predicted
-6. corss validation to be updated
-
+Output = ['output', output_unit_num]
+```
 Model example:
-
+```
 Model = [['input', (1, 28, 28)],
          ['convolution', [(5, 5), 8, 2, 1]],
          ['maxpooling', [(2, 2), 2]],
@@ -69,11 +63,8 @@ DeepNet = nn.NeuralNetwork(Model)
 DeepNet.method(activation='LReLU', output='softmax', shuffle=True)
 TrainError = DeepNet.train(TrainImage, TrainLabel, 0.0005, 5)
 Result = DeepNet.predict(TestImage, TestLabel)
-
-A training epoch throughout mnist data (60000 instances) for cnn takes about 1000s.
-Prediction throughout mnist data (10000 instances) for cnn takes about 60s.
-
-Current best model: model/cnn_triple_dropout_0.3_shuffle.npy
-Accuracy on mnist: 99.37%
+```
+A training epoch throughout Mnist data (60000 instances) for cnn takes about 1000s.
+Prediction throughout Mnist data (10000 instances) for cnn takes about 60s.
 
 cnn_train.py and nn_train.py provide train examples for CNN and NN.
