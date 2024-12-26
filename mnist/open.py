@@ -9,7 +9,7 @@ class readMNIST(object):
     输出格式为：numpy.array()
 
     使用方法如下
-    from readMNIIST import readMNIIST
+    from readMNIST import readMNIST
     def main():
         trainfile_X = '../dataset/MNIST/train-images.idx3-ubyte'
         trainfile_y = '../dataset/MNIST/train-labels.idx1-ubyte'
